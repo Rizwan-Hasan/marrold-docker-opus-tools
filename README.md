@@ -5,7 +5,7 @@ marrold-opus-tools is a basic docker image containing the [opus-tools](https://o
 
 ## Info
 
-The image is based on [debian:buster-slim](https://hub.docker.com/_/debian) and the current opus-tools version is 0.2
+The image is based on [debian:bullseye-slim](https://hub.docker.com/_/debian) and the current opus-tools version is 0.2
 
 The image is currently only available for the `amd64` architecture.
 
