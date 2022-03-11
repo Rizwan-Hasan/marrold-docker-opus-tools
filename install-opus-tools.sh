@@ -1,13 +1,14 @@
 #!/bin/bash
-# Install opus-tools 
+
+# Install opus-tools
 # Latest releases: opus 1.3.1, opus-tools 0.2, opusfile 0.11, libopusenc 0.2.1
 # Taken from https://gist.github.com/Nottt/f55dd79ca235d8add67423a76b304961
 
-set -e 
+set -e
 set -o pipefail
 
 # Install packages needed
- 
+
 apt update > /dev/null 2>&1 && apt install -y curl libflac-dev > /dev/null 2>&1
 
 # Remove packages that can cause issues
@@ -35,21 +36,21 @@ curl -Ls https://archive.mozilla.org/pub/opus/opus-tools-0.2.tar.gz | tar xz -C 
 cd "$TEMP_FOLDER"/opus-1.3.1 || exit
 
 ./configure
-make && make install
+make -j $(nproc) && make install
 
 cd "$TEMP_FOLDER"/opusfile-0.11 || exit
 
 ./configure
-make && make install
+make -j $(nproc) && make install
 
 cd "$TEMP_FOLDER"/libopusenc-0.2.1 || exit
 
 ./configure
-make && make install
+make -j $(nproc) && make install
 
 cd "$TEMP_FOLDER"/opus-tools-0.2 || exit
 ./configure
-make
+make -j $(nproc)
 make install
 ldconfig
 
